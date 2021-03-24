@@ -19,6 +19,12 @@ matrix:
       python: "3.6"
       services:
         - docker
+    - sudo: required
+      language: python
+      arch: arm64
+      python: "3.8"
+      services:
+        - docker
     - language: python
       python: "3.6"
       env: RUN_DEBUG_PYTHON=true
@@ -52,7 +58,7 @@ script:
   # so we remove bytecode files before running it.
   - find . -name __pycache__ -exec rm -rf {} +
   - |
-    pip3 install cibuildwheel==1.7.1
+    pip3 install cibuildwheel==1.10.0
     cibuildwheel --output-dir wheelhouse
     if [[ -n "$TRAVIS_TAG" && -z "$RUN_DEBUG_PYTHON" ]]; then
       pip3 install twine
