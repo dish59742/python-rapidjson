@@ -22,7 +22,7 @@ matrix:
     - sudo: required
       language: python
       arch: arm64
-      python: "3.8"
+      python: "3.6"
       services:
         - docker
     - language: python
